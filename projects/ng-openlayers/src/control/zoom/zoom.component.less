@@ -1,0 +1,39 @@
+@control-zoom-prefix-cls: ~'ol-control-zoom';
+
+.@{control-zoom-prefix-cls} {
+  display: block;
+
+  .ol-zoom {
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+  }
+
+  .ol-zoom > .ol-zoom-in,
+  .ol-zoom > .ol-zoom-out {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    font-size: 22px;
+    text-align: center;
+    line-height: 32px;
+    color: #8c8c8c;
+    background-color: #fff;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #1890ff;
+    }
+  }
+
+  .ol-zoom > .ol-zoom-in {
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+  }
+
+  .ol-zoom > .ol-zoom-out {
+    border-radius: 0 0 4px 4px;
+  }
+}

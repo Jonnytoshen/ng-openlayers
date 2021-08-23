@@ -1,0 +1,16 @@
+{
+  "name": "@jonnytoshen/ng-openlayers",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/cdk": "^12.2.2",
+    "@angular/common": "^12.1.0",
+    "@angular/core": "^12.1.0",
+    "ol": "^6.5.0"
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/ol": "^6.5.0"
+  }
+}

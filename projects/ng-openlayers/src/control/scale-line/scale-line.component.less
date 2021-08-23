@@ -1,0 +1,21 @@
+@scale-line-prefix-cls: ~'ol-control-scale-line';
+
+.@{scale-line-prefix-cls} {
+  display: inline-block;
+
+  .ol-scale-line {
+    background: transparent;
+    padding: 2px;
+
+    &-inner {
+      border: 1px solid #595959;
+      border-top: none;
+      color: #595959;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: center;
+      will-change: contents, width;
+      transition: all 0.25s;
+    }
+  }
+}
