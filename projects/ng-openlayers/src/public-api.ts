@@ -6,6 +6,7 @@ export * from './control/mouse-position';
 export * from './control/scale-line';
 export * from './control/zoom';
 export * from './core';
+export * from './interaction/draw-interaction';
 export * from './interaction/interaction';
 export * from './interaction/pinch-zoom-interaction';
 export * from './interaction/pointer-interaction';
