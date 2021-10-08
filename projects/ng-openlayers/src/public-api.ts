@@ -12,6 +12,7 @@ export * from './interaction/modify-interaction';
 export * from './interaction/pinch-zoom-interaction';
 export * from './interaction/pointer-interaction';
 export * from './interaction/select-interaction';
+export * from './interaction/snap-interaction';
 export * from './layer/base-image-layer';
 export * from './layer/base-layer';
 export * from './layer/base-tile-layer';
