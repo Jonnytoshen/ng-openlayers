@@ -1,6 +1,26 @@
 {
-  "name": "@jonnytoshen/ng-openlayers",
+  "name": "@sspingme/ng-openlayers",
   "version": "1.0.0",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jonnytoshen/ng-openlayers.git"
+  },
+  "author": {
+    "name": "Jonny",
+    "email": "jonnytoshen@gmail.com"
+  },
+  "keywords": [
+    "ol",
+    "openlayers",
+    "map",
+    "angular",
+    "ng-openlayers"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonnytoshen/ng-openlayers/issues"
+  },
   "peerDependencies": {
     "@angular/cdk": "^12.2.2",
     "@angular/common": "^12.1.0",
