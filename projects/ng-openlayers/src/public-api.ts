@@ -8,6 +8,7 @@ export * from './control/zoom';
 export * from './core';
 export * from './interaction/draw-interaction';
 export * from './interaction/interaction';
+export * from './interaction/modify-interaction';
 export * from './interaction/pinch-zoom-interaction';
 export * from './interaction/pointer-interaction';
 export * from './interaction/select-interaction';
