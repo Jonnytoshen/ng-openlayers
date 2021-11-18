@@ -52,19 +52,19 @@ export class MapComponent implements OnInit, OnChanges, AfterContentInit, AfterV
   @Output('olOnChangeSize') changeSize$ = new EventEmitter<ObjectEvent>();
   @Output('olOnChangeTarget') changeTarget$ = new EventEmitter<ObjectEvent>();
   @Output('olOnChangeView') changeView$ = new EventEmitter<ObjectEvent>();
-  @Output('olOnClick') click$ = new EventEmitter<MapBrowserEvent>();
-  @Output('olOnDblclick') dblclick$ = new EventEmitter<MapBrowserEvent>();
+  @Output('olOnClick') click$ = new EventEmitter<MapBrowserEvent<UIEvent>>();
+  @Output('olOnDblclick') dblclick$ = new EventEmitter<MapBrowserEvent<UIEvent>>();
   @Output('olOnError') error$ = new EventEmitter<BaseEvent>();
   @Output('olOnMoveend') moveend$ = new EventEmitter<MapEvent>();
   @Output('olOnMovestart') movestart$ = new EventEmitter<MapEvent>();
-  @Output('olOnPointerdrag') pointerdrag$ = new EventEmitter<MapBrowserEvent>();
-  @Output('olOnPointermove') pointermove$ = new EventEmitter<MapBrowserEvent>();
+  @Output('olOnPointerdrag') pointerdrag$ = new EventEmitter<MapBrowserEvent<UIEvent>>();
+  @Output('olOnPointermove') pointermove$ = new EventEmitter<MapBrowserEvent<UIEvent>>();
   @Output('olOnPostcompose') postcompose$ = new EventEmitter<RenderEvent>();
   @Output('olOnPostrender') postrender$ = new EventEmitter<MapEvent>();
   @Output('olOnPrecompose') precompose$ = new EventEmitter<RenderEvent>();
   @Output('olOnPropertychange') propertychange$ = new EventEmitter<ObjectEvent>();
   @Output('olOnRendercomplete') rendercomplete$ = new EventEmitter<RenderEvent>();
-  @Output('olOnSingleclick') singleclick$ = new EventEmitter<MapBrowserEvent>();
+  @Output('olOnSingleclick') singleclick$ = new EventEmitter<MapBrowserEvent<UIEvent>>();
 
   @ContentChildren(LAYER_PROVIDER) layerComponents!: QueryList<BaseLayerRef>;
   @ContentChildren(InteractionComponent, { descendants: true }) interactionComponents!: QueryList<InteractionComponent>;
@@ -189,23 +189,23 @@ export class MapComponent implements OnInit, OnChanges, AfterContentInit, AfterV
     const target: HTMLElement = this.elementRef.nativeElement.firstElementChild as HTMLElement;
     this.instance = new Map({ ...this, target });
     this.instance.on('change', (event: BaseEvent) => this.change$.emit(event));
-    this.instance.on('change:layerGroup', (event: ObjectEvent) => this.changeLayerGroup$.emit(event));
+    this.instance.on('change:layergroup', (event: ObjectEvent) => this.changeLayerGroup$.emit(event));
     this.instance.on('change:size', (event: ObjectEvent) => this.changeSize$.emit(event));
     this.instance.on('change:target', (event: ObjectEvent) => this.changeTarget$.emit(event));
     this.instance.on('change:view', (event: ObjectEvent) => this.changeView$.emit(event));
-    this.instance.on('click', (event: MapBrowserEvent) => this.click$.emit(event));
-    this.instance.on('dblclick', (event: MapBrowserEvent) => this.dblclick$.emit(event));
+    this.instance.on('click', (event: MapBrowserEvent<UIEvent>) => this.click$.emit(event));
+    this.instance.on('dblclick', (event: MapBrowserEvent<UIEvent>) => this.dblclick$.emit(event));
     this.instance.on('error', (event: BaseEvent) => this.error$.emit(event));
     this.instance.on('moveend', (event: MapEvent) => this.moveend$.emit(event));
     this.instance.on('movestart', (event: MapEvent) => this.movestart$.emit(event));
-    this.instance.on('pointerdrag', (event: MapBrowserEvent) => this.pointerdrag$.emit(event));
-    this.instance.on('pointermove', (event: MapBrowserEvent) => this.pointermove$.emit(event));
+    this.instance.on('pointerdrag', (event: MapBrowserEvent<UIEvent>) => this.pointerdrag$.emit(event));
+    this.instance.on('pointermove', (event: MapBrowserEvent<UIEvent>) => this.pointermove$.emit(event));
     this.instance.on('postcompose', (event: RenderEvent) => this.postcompose$.emit(event));
     this.instance.on('postrender', (event: MapEvent) => this.postrender$.emit(event));
     this.instance.on('precompose', (event: RenderEvent) => this.precompose$.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertychange$.emit(event));
     this.instance.on('rendercomplete', (event: RenderEvent) => this.rendercomplete$.emit(event));
-    this.instance.on('singleclick', (event: MapBrowserEvent) => this.singleclick$.emit(event));
+    this.instance.on('singleclick', (event: MapBrowserEvent<UIEvent>) => this.singleclick$.emit(event));
   }
 
 }

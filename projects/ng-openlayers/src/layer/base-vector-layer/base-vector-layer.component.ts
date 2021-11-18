@@ -3,6 +3,7 @@ import Geometry from 'ol/geom/Geometry';
 import BaseVectorLayer, { Options } from 'ol/layer/BaseVector';
 import { OrderFunction } from 'ol/render';
 import VectorSource from 'ol/source/Vector';
+import VectorTile from 'ol/source/VectorTile';
 import Style, { StyleLike } from 'ol/style/Style';
 import { distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
@@ -23,7 +24,7 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseVectorLayerComponent extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options {
+export class BaseVectorLayerComponent extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<VectorSource<any> | VectorTile> {
 
   @Input('olRenderOrder') renderOrder?: OrderFunction;
   @Input('olRenderBuffer') renderBuffer?: number;
@@ -36,7 +37,7 @@ export class BaseVectorLayerComponent extends LayerComponent implements OnInit, 
   @ContentChildren(VectorSourceComponent) sources!: QueryList<SourceComponent>;
   @ContentChildren(StyleComponent) styles!: QueryList<StyleComponent>;
 
-  instance!: BaseVectorLayer;
+  instance!: BaseVectorLayer<VectorSource<any> | VectorTile>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

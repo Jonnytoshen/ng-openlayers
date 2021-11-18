@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, OnChange
 import { Size } from 'ol/size';
 import { Fill, Stroke } from 'ol/style';
 import Text, { Options } from 'ol/style/Text';
-import TextPlacement from 'ol/style/TextPlacement';
+import { TextPlacement } from './text-style.model';
 import { StyleComponent } from '../style';
 
 @Component({

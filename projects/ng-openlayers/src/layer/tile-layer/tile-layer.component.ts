@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone } from '@angular/core';
 import TileLayer from 'ol/layer/Tile';
+import TileSource from 'ol/source/Tile';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { BaseTileLayerComponent } from '../base-tile-layer';
 
@@ -21,7 +22,7 @@ import { BaseTileLayerComponent } from '../base-tile-layer';
 })
 export class TileLayerComponent extends BaseTileLayerComponent implements OnInit, BaseLayerRef  {
 
-  instance!: TileLayer;
+  instance!: TileLayer<TileSource>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

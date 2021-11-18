@@ -2,8 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, OnChange
 import { Color } from 'ol/color';
 import { Size } from 'ol/size';
 import Icon, { Options } from 'ol/style/Icon';
-import IconAnchorUnits from 'ol/style/IconAnchorUnits';
-import IconOrigin from 'ol/style/IconOrigin';
+import { IconAnchorUnits, IconOrigin } from './icon-style.model';
 import { ImageStyleComponent } from '../image-style';
 import { StyleComponent } from '../style';
 

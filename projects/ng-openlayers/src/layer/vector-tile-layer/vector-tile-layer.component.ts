@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, forwardRef, Output, EventEmitter, OnChanges, SimpleChanges, ContentChildren, QueryList, NgZone } from '@angular/core';
 import VectorTileLayer, { Options } from 'ol/layer/VectorTile';
-import VectorTileRenderType from 'ol/layer/VectorTileRenderType';
 import { ObjectEvent } from 'ol/Object';
 import VectorTile from 'ol/source/VectorTile';
 import { LAYER_PROVIDER } from '../../core/layer';
 import { SourceComponent } from '../../source/source';
 import { VectorTileSourceComponent } from '../../source/vector-tile-source';
 import { BaseVectorLayerComponent } from '../base-vector-layer';
+import { VectorTileRenderType } from './vector-tile-layer.model';
 
 @Component({
   selector: 'ol-vector-tile-layer',

@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, OnInit, NgZone } from '@angular/core';
-import { ImageTile } from 'ol';
+import ImageTile from 'ol/ImageTile';
 import TileImageSource, { Options } from 'ol/source/TileImage';
 import { UrlTileSourceComponent } from '../url-tile-source';
 
@@ -15,7 +15,7 @@ export class TileImageSourceComponent extends UrlTileSourceComponent implements 
   @Input() crossOrigin?: string;
   @Input() imageSmoothing?: boolean;
   @Input() reprojectionErrorThreshold?: number;
-  @Input() tileClass?: ImageTile;
+  @Input() tileClass?: typeof ImageTile;
 
   instance!: TileImageSource
 

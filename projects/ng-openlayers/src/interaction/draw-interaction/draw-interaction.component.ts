@@ -2,10 +2,10 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, NgZone, 
 import { Collection, Feature } from 'ol';
 import { Condition } from 'ol/events/condition';
 import Geometry from 'ol/geom/Geometry';
-import GeometryType from 'ol/geom/GeometryType';
 import Draw, { DrawEvent, GeometryFunction } from 'ol/interaction/Draw';
 import VectorSource from 'ol/source/Vector';
 import { StyleLike } from 'ol/style/Style';
+import { GeometryType } from '../../core/models';
 import { InteractionComponent } from '../interaction';
 import { PointerInteractionComponent } from '../pointer-interaction';
 

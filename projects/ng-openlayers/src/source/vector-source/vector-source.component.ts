@@ -24,15 +24,15 @@ export class VectorSourceComponent extends SourceComponent implements OnInit, On
   @Input('olUrl') url?: string | FeatureUrlFunction;
   @Input('olUseSpatialIndex') useSpatialIndex?: boolean;
 
-  @Output('olOnAddfeature') addfeature$ = new EventEmitter<VectorSourceEvent>();
+  @Output('olOnAddfeature') addfeature$ = new EventEmitter<VectorSourceEvent<Geometry>>();
   @Output('olOnChangefeature') changefeature$ = new EventEmitter<BaseEvent>();
-  @Output('olOnClear') clear$ = new EventEmitter<VectorSourceEvent>();
-  @Output('olOnFeaturesloadend') featuresloadend$ = new EventEmitter<VectorSourceEvent>();
-  @Output('olOnFeaturesloaderror') featuresloaderror$ = new EventEmitter<VectorSourceEvent>();
-  @Output('olOnFeaturesloadstart') featuresloadstart$ = new EventEmitter<VectorSourceEvent>();
-  @Output('olOnRemovefeature') removefeature$ = new EventEmitter<VectorSourceEvent>();
+  @Output('olOnClear') clear$ = new EventEmitter<VectorSourceEvent<Geometry>>();
+  @Output('olOnFeaturesloadend') featuresloadend$ = new EventEmitter<VectorSourceEvent<Geometry>>();
+  @Output('olOnFeaturesloaderror') featuresloaderror$ = new EventEmitter<VectorSourceEvent<Geometry>>();
+  @Output('olOnFeaturesloadstart') featuresloadstart$ = new EventEmitter<VectorSourceEvent<Geometry>>();
+  @Output('olOnRemovefeature') removefeature$ = new EventEmitter<VectorSourceEvent<Geometry>>();
 
-  instance!: VectorSource;
+  instance!: VectorSource<Geometry>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);
@@ -43,13 +43,13 @@ export class VectorSourceComponent extends SourceComponent implements OnInit, On
       if (!this.instance) {
         this.instance = new VectorSource(this);
       }
-      this.instance.on('addfeature', (event: VectorSourceEvent) => this.addfeature$.emit(event));
+      this.instance.on('addfeature', (event: VectorSourceEvent<Geometry>) => this.addfeature$.emit(event));
       this.instance.on('changefeature', (event: BaseEvent) => this.changefeature$.emit(event));
-      this.instance.on('clear', (event: VectorSourceEvent) => this.clear$.emit(event));
-      this.instance.on('featuresloadend', (event: VectorSourceEvent) => this.featuresloadend$.emit(event));
-      this.instance.on('featuresloaderror', (event: VectorSourceEvent) => this.featuresloaderror$.emit(event));
-      this.instance.on('featuresloadstart', (event: VectorSourceEvent) => this.featuresloadstart$.emit(event));
-      this.instance.on('removefeature', (event: VectorSourceEvent) => this.removefeature$.emit(event));
+      this.instance.on('clear', (event: VectorSourceEvent<Geometry>) => this.clear$.emit(event));
+      this.instance.on('featuresloadend', (event: VectorSourceEvent<Geometry>) => this.featuresloadend$.emit(event));
+      this.instance.on('featuresloaderror', (event: VectorSourceEvent<Geometry>) => this.featuresloaderror$.emit(event));
+      this.instance.on('featuresloadstart', (event: VectorSourceEvent<Geometry>) => this.featuresloadstart$.emit(event));
+      this.instance.on('removefeature', (event: VectorSourceEvent<Geometry>) => this.removefeature$.emit(event));
 
       super.ngOnInit();
     });

@@ -17,13 +17,13 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseImageLayerComponent extends LayerComponent implements OnInit, BaseLayerRef, Options {
+export class BaseImageLayerComponent extends LayerComponent implements OnInit, BaseLayerRef, Options<ImageSource> {
 
   @Input('olSource') source?: ImageSource;
 
   @ContentChildren(ImageSourceComponent) sources!: QueryList<ImageSourceComponent>;
 
-  instance!: BaseImageLayer;
+  instance!: BaseImageLayer<ImageSource>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

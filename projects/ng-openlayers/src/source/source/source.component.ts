@@ -3,7 +3,7 @@ import BaseEvent from 'ol/events/Event';
 import { ObjectEvent } from 'ol/Object';
 import { ProjectionLike } from 'ol/proj';
 import Source, { AttributionLike, Options } from 'ol/source/Source';
-import State from 'ol/source/State';
+import { State } from './source.model';
 
 @Component({
   selector: 'ol-source',

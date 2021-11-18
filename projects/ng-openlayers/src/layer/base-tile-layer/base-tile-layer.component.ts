@@ -19,7 +19,7 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseTileLayerComponent extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options {
+export class BaseTileLayerComponent extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options<TileSource> {
 
   @Input('olPreload') preload?: number;
   @Input('olSource') source?: TileSource;
@@ -30,7 +30,7 @@ export class BaseTileLayerComponent extends LayerComponent implements OnInit, On
 
   @ContentChildren(TileSourceComponent) sources!: QueryList<SourceComponent>;
 
-  instance!: BaseTileLayer;
+  instance!: BaseTileLayer<TileSource>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

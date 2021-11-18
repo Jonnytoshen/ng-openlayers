@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, OnChanges, forwardRef, Input, SimpleChanges, NgZone } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import ImageWMS, { Options } from 'ol/source/ImageWMS';
-import WMSServerType from 'ol/source/WMSServerType';
 import { ImageSourceComponent } from '../image-source';
+import { WMSServerType } from './image-wms-source.model';
 
 @Component({
   selector: 'ol-image-wms-source',

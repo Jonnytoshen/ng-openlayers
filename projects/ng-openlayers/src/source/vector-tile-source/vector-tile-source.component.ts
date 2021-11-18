@@ -18,7 +18,7 @@ export class VectorTileSourceComponent extends UrlTileSourceComponent implements
   @Input('olExtent') extent?: Extent;
   @Input('olFormat') format?: FeatureFormat;
   @Input('olOverlaps') overlaps?: boolean;
-  @Input('olTileClass') tileClass?: VectorTile_1;
+  @Input('olTileClass') tileClass?: typeof VectorTile_1;
   @Input('olMaxZoom') maxZoom?: number;
   @Input('olMinZoom') minZoom?: number;
   @Input('olTileSize') tileSize?: number | Size;

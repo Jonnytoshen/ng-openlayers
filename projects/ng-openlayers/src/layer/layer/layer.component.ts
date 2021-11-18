@@ -20,7 +20,7 @@ import { BaseLayerComponent } from '../base-layer';
     multi: true
   }]
 })
-export class LayerComponent extends BaseLayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options {
+export class LayerComponent extends BaseLayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<Source> {
 
   @Input('olSource') source?: Source;
   @Input('olMap') map?: PluggableMap;
@@ -31,7 +31,7 @@ export class LayerComponent extends BaseLayerComponent implements OnInit, OnChan
 
   @ContentChildren(SourceComponent) sources!: QueryList<SourceComponent>;
 
-  instance!: Layer;
+  instance!: Layer<Source>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, Component
 import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal'
 import { Coordinate } from 'ol/coordinate';
 import Overlay, { Options, PanIntoViewOptions, PanOptions } from 'ol/Overlay';
-import OverlayPositioning from 'ol/OverlayPositioning';
 import { OverlayContentDirective } from './overlay-content.directive';
+import { OverlayPositioning } from './overlay.model';
 
 @Component({
   selector: 'ol-overlay',

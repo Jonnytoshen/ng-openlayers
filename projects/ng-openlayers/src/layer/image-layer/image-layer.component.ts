@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone } from '@angular/core';
 import ImageLayer from 'ol/layer/Image';
+import ImageSource from 'ol/source/Image';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { BaseImageLayerComponent } from '../base-image-layer';
 
@@ -21,7 +22,7 @@ import { BaseImageLayerComponent } from '../base-image-layer';
 })
 export class ImageLayerComponent extends BaseImageLayerComponent implements OnInit, BaseLayerRef  {
 
-  instance!: ImageLayer;
+  instance!: ImageLayer<ImageSource>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);
