@@ -1,6 +1,6 @@
 {
   "name": "@sspingme/ng-openlayers",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {},
   "repository": {
     "type": "git",
@@ -22,10 +22,10 @@
     "url": "https://github.com/Jonnytoshen/ng-openlayers/issues"
   },
   "peerDependencies": {
-    "@angular/cdk": ">=12.2.2",
-    "@angular/common": ">=12.1.0",
-    "@angular/core": ">=12.1.0",
-    "ol": ">=6.9.0"
+    "@angular/cdk": "^13.0.0",
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "ol": "^6.9.0"
   },
   "dependencies": {
     "tslib": "^2.2.0"
