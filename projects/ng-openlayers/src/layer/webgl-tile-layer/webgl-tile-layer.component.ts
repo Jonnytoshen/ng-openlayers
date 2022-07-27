@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone, Input, ContentChildren, QueryList } from '@angular/core';
-import WebGLTileLayer, { Options, Style } from 'ol/layer/WebGLTile';
+import { Extent } from 'ol/extent';
+import WebGLTileLayer, { Options, SourceType, Style } from 'ol/layer/WebGLTile';
+import LayerRenderer from 'ol/renderer/Layer';
 import { LAYER_PROVIDER } from '../../core';
 import { GeoTIFFSourceComponent } from '../../source/geo-tiff-source';
 import { BaseTileLayerComponent } from '../base-tile-layer';
@@ -20,12 +22,13 @@ import { BaseTileLayerComponent } from '../base-tile-layer';
     multi: false
   }]
 })
-export class WebGLTileLayerComponent extends BaseTileLayerComponent implements OnInit, Options {
+export class WebGLTileLayerComponent extends BaseTileLayerComponent<SourceType, LayerRenderer<any>> implements OnInit, Options {
 
   @Input('olStyle') style?: Style;
   @Input('olCacheSize') cacheSize?: number;
+  @Input('olSources') sources?: Array<SourceType> | ((extent: Extent, resolution: number) => Array<SourceType>)
 
-  @ContentChildren(GeoTIFFSourceComponent) sources!: QueryList<GeoTIFFSourceComponent>;
+  @ContentChildren(GeoTIFFSourceComponent) sourceComponents!: QueryList<GeoTIFFSourceComponent>;
 
   instance!: WebGLTileLayer;
 

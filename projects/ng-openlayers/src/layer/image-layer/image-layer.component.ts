@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone } from '@angular/core';
 import ImageLayer from 'ol/layer/Image';
+import CanvasImageLayerRenderer from 'ol/renderer/canvas/ImageLayer';
 import ImageSource from 'ol/source/Image';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { BaseImageLayerComponent } from '../base-image-layer';
@@ -20,7 +21,7 @@ import { BaseImageLayerComponent } from '../base-image-layer';
     multi: false
   }]
 })
-export class ImageLayerComponent extends BaseImageLayerComponent implements OnInit, BaseLayerRef  {
+export class ImageLayerComponent extends BaseImageLayerComponent<ImageSource, CanvasImageLayerRenderer> implements OnInit, BaseLayerRef  {
 
   instance!: ImageLayer<ImageSource>;
 

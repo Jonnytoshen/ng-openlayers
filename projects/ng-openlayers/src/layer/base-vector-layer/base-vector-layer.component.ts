@@ -2,6 +2,10 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardR
 import Geometry from 'ol/geom/Geometry';
 import BaseVectorLayer, { Options } from 'ol/layer/BaseVector';
 import { OrderFunction } from 'ol/render';
+import CanvasVectorImageLayerRenderer from 'ol/renderer/canvas/VectorImageLayer';
+import CanvasVectorLayerRenderer from 'ol/renderer/canvas/VectorLayer';
+import CanvasVectorTileLayerRenderer from 'ol/renderer/canvas/VectorTileLayer';
+import WebGLPointsLayerRenderer from 'ol/renderer/webgl/PointsLayer';
 import VectorSource from 'ol/source/Vector';
 import VectorTile from 'ol/source/VectorTile';
 import Style, { StyleLike } from 'ol/style/Style';
@@ -24,7 +28,10 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseVectorLayerComponent extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<VectorSource<any> | VectorTile> {
+export class BaseVectorLayerComponent<
+  VectorSourceType extends VectorSource<Geometry> | VectorTile, 
+  RendererType extends CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer
+> extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<VectorSource<any> | VectorTile> {
 
   @Input('olRenderOrder') renderOrder?: OrderFunction;
   @Input('olRenderBuffer') renderBuffer?: number;
@@ -37,7 +44,7 @@ export class BaseVectorLayerComponent extends LayerComponent implements OnInit, 
   @ContentChildren(VectorSourceComponent) sources!: QueryList<SourceComponent>;
   @ContentChildren(StyleComponent) styles!: QueryList<StyleComponent>;
 
-  instance!: BaseVectorLayer<VectorSource<any> | VectorTile>;
+  instance!: BaseVectorLayer<VectorSourceType, RendererType>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

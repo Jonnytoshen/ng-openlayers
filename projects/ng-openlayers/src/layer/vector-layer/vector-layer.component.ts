@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone } from '@angular/core';
 import Geometry from 'ol/geom/Geometry';
 import VectorLayer from 'ol/layer/Vector';
+import CanvasVectorLayerRenderer from 'ol/renderer/canvas/VectorLayer';
 import VectorSource from 'ol/source/Vector';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { BaseVectorLayerComponent } from '../base-vector-layer';
@@ -17,7 +18,7 @@ import { BaseVectorLayerComponent } from '../base-vector-layer';
     multi: true
   }]
 })
-export class VectorLayerComponent extends BaseVectorLayerComponent implements OnInit, BaseLayerRef {
+export class VectorLayerComponent extends BaseVectorLayerComponent<VectorSource<Geometry>, CanvasVectorLayerRenderer> implements OnInit, BaseLayerRef {
 
   instance!: VectorLayer<VectorSource<Geometry>>;
 

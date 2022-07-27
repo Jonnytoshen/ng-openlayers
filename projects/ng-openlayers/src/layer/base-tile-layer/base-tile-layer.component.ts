@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnChanges, SimpleChanges, Input, Output, EventEmitter, OnInit, forwardRef, ContentChildren, QueryList, NgZone } from '@angular/core';
 import BaseTileLayer, { Options } from 'ol/layer/BaseTile';
 import { ObjectEvent } from 'ol/Object';
+import LayerRenderer from 'ol/renderer/Layer';
 import TileSource from 'ol/source/Tile';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { SourceComponent } from '../../source/source';
@@ -19,18 +20,18 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseTileLayerComponent extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options<TileSource> {
+export class BaseTileLayerComponent<TileSourceType extends TileSource, RendererType extends LayerRenderer<any>> extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options<TileSourceType> {
 
   @Input('olPreload') preload?: number;
-  @Input('olSource') source?: TileSource;
+  @Input('olSource') source?: TileSourceType;
   @Input('olUseInterimTilesOnError') useInterimTilesOnError?: boolean;
 
   @Output('olOnChangePreload') changePreload$ = new EventEmitter<ObjectEvent>();
   @Output('olOnChangeUseInterimTilesOnError') changeUseInterimTilesOnError$ = new EventEmitter<ObjectEvent>();
 
-  @ContentChildren(TileSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(TileSourceComponent) sourceComponents!: QueryList<SourceComponent>;
 
-  instance!: BaseTileLayer<TileSource>;
+  instance!: BaseTileLayer<TileSourceType, RendererType>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

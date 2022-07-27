@@ -20,7 +20,7 @@ export class ImageWMSSourceComponent extends ImageSourceComponent implements OnI
 
   @Input('olCrossOrigin') crossOrigin?: string;
   @Input('olHidpi') hidpi?: boolean;
-  @Input('olServerType') serverType?: WMSServerType | string;
+  @Input('olServerType') serverType?: WMSServerType;
   @Input('olImageLoadFunction') imageLoadFunction?: LoadFunction;
   @Input('olParams') params!: { [key: string]: any };
   @Input('olRatio') ratio?: number;
