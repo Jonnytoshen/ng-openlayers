@@ -13,10 +13,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "ng-openlayers": [
-        "dist/ng-openlayers/ng-openlayers",
-        "dist/ng-openlayers"
-      ]
+      "@ng-openlayers/*": ["projects/ng-openlayers/src/*"]
     },
     "experimentalDecorators": true,
     "moduleResolution": "node",
