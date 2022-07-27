@@ -22,7 +22,7 @@ export class BaseImageLayerComponent<ImageSourceType extends ImageSource, Render
 
   @Input('olSource') source?: ImageSourceType;
 
-  @ContentChildren(ImageSourceComponent) sources!: QueryList<ImageSourceComponent>;
+  @ContentChildren(ImageSourceComponent) sourceComponents!: QueryList<ImageSourceComponent>;
 
   instance!: BaseImageLayer<ImageSourceType, RendererType>;
 

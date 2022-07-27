@@ -35,7 +35,7 @@ export class VectorTileLayerComponent extends BaseVectorLayerComponent<VectorTil
   @Output('olOnPreload') onPreload$ = new EventEmitter<ObjectEvent>();
   @Output('olOnUseInterimTilesOnError') onUseInterimTilesOnError$ = new EventEmitter<ObjectEvent>();
 
-  @ContentChildren(VectorTileSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(VectorTileSourceComponent) sourceComponents!: QueryList<SourceComponent>;
 
   instance!: VectorTileLayer;
 
@@ -44,7 +44,7 @@ export class VectorTileLayerComponent extends BaseVectorLayerComponent<VectorTil
   }
 
   ngOnInit(): void {
-    super.ngZone.runOutsideAngular(() => {
+    this.ngZone.runOutsideAngular(() => {
       if (!this.instance) {
         this.instance = new VectorTileLayer(this);
       }

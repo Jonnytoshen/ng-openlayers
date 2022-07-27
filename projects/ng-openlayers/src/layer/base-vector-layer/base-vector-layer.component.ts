@@ -41,7 +41,7 @@ export class BaseVectorLayerComponent<
   @Input('olUpdateWhileAnimating') updateWhileAnimating?: boolean;
   @Input('olUpdateWhileInteracting') updateWhileInteracting?: boolean;
 
-  @ContentChildren(VectorSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(VectorSourceComponent) sourceComponents!: QueryList<SourceComponent>;
   @ContentChildren(StyleComponent) styles!: QueryList<StyleComponent>;
 
   instance!: BaseVectorLayer<VectorSourceType, RendererType>;
