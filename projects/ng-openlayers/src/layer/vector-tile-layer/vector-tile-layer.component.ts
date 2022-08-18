@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, forwardRef, Output, EventEmitter, OnChanges, SimpleChanges, ContentChildren, QueryList, NgZone } from '@angular/core';
 import VectorTileLayer, { Options } from 'ol/layer/VectorTile';
 import { ObjectEvent } from 'ol/Object';
+import CanvasVectorTileLayerRenderer from 'ol/renderer/canvas/VectorTileLayer';
 import VectorTile from 'ol/source/VectorTile';
 import { LAYER_PROVIDER } from '../../core/layer';
 import { SourceComponent } from '../../source/source';
@@ -24,7 +25,7 @@ import { VectorTileRenderType } from './vector-tile-layer.model';
     multi: false
   }]
 })
-export class VectorTileLayerComponent extends BaseVectorLayerComponent implements OnInit, OnChanges, Options {
+export class VectorTileLayerComponent extends BaseVectorLayerComponent<VectorTile, CanvasVectorTileLayerRenderer> implements OnInit, OnChanges, Options {
 
   @Input('olRenderMode') renderMode?: VectorTileRenderType | string;
   @Input('olSource') source?: VectorTile;
@@ -34,7 +35,7 @@ export class VectorTileLayerComponent extends BaseVectorLayerComponent implement
   @Output('olOnPreload') onPreload$ = new EventEmitter<ObjectEvent>();
   @Output('olOnUseInterimTilesOnError') onUseInterimTilesOnError$ = new EventEmitter<ObjectEvent>();
 
-  @ContentChildren(VectorTileSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(VectorTileSourceComponent) sourceComponents!: QueryList<SourceComponent>;
 
   instance!: VectorTileLayer;
 

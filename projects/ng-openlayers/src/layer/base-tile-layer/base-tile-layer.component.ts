@@ -20,18 +20,18 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseTileLayerComponent extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options<TileSource> {
+export class BaseTileLayerComponent<TileSourceType extends TileSource, RendererType extends LayerRenderer<any>> extends LayerComponent implements OnInit, OnChanges, BaseLayerRef, Options<TileSourceType> {
 
   @Input('olPreload') preload?: number;
-  @Input('olSource') source?: TileSource;
+  @Input('olSource') source?: TileSourceType;
   @Input('olUseInterimTilesOnError') useInterimTilesOnError?: boolean;
 
   @Output('olOnChangePreload') changePreload$ = new EventEmitter<ObjectEvent>();
   @Output('olOnChangeUseInterimTilesOnError') changeUseInterimTilesOnError$ = new EventEmitter<ObjectEvent>();
 
-  @ContentChildren(TileSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(TileSourceComponent) sourceComponents!: QueryList<SourceComponent>;
 
-  instance!: BaseTileLayer<TileSource, LayerRenderer<any>>;
+  instance!: BaseTileLayer<TileSourceType, RendererType>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

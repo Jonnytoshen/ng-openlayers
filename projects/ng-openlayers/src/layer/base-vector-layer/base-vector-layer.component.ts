@@ -28,7 +28,10 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseVectorLayerComponent extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<VectorSource<any> | VectorTile> {
+export class BaseVectorLayerComponent<
+  VectorSourceType extends VectorSource<Geometry> | VectorTile, 
+  RendererType extends CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer
+> extends LayerComponent implements OnInit, OnChanges, AfterContentInit, BaseLayerRef, Options<VectorSource<any> | VectorTile> {
 
   @Input('olRenderOrder') renderOrder?: OrderFunction;
   @Input('olRenderBuffer') renderBuffer?: number;
@@ -38,13 +41,10 @@ export class BaseVectorLayerComponent extends LayerComponent implements OnInit, 
   @Input('olUpdateWhileAnimating') updateWhileAnimating?: boolean;
   @Input('olUpdateWhileInteracting') updateWhileInteracting?: boolean;
 
-  @ContentChildren(VectorSourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(VectorSourceComponent) sourceComponents!: QueryList<SourceComponent>;
   @ContentChildren(StyleComponent) styles!: QueryList<StyleComponent>;
 
-  instance!: BaseVectorLayer<
-    VectorSource<any> | VectorTile,
-    CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer
-  >;
+  instance!: BaseVectorLayer<VectorSourceType, RendererType>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

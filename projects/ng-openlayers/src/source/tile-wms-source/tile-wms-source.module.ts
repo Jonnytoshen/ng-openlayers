@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TileWWMSSourceComponent } from './tile-wms-source.component';
+import { TileWMSSourceComponent } from './tile-wms-source.component';
 
 
 
 @NgModule({
-  declarations: [TileWWMSSourceComponent],
-  exports: [TileWWMSSourceComponent],
+  declarations: [TileWMSSourceComponent],
+  exports: [TileWMSSourceComponent],
   imports: [CommonModule]
 })
 export class TileWMSSourceModule { }

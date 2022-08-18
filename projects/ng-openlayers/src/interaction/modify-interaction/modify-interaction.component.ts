@@ -46,7 +46,7 @@ export class ModifyInteractionComponent extends PointerInteractionComponent impl
   @Input('olPixelTolerance') pixelTolerance?: number;
   @Input('olStyle') style?: StyleLike;
   @Input('olSource') source?: VectorSource<Geometry>;
-  @Input('olHitDetection') hitDetection?: ModifyInteractionHitDetection;
+  @Input('olHitDetection') hitDetection?: boolean | BaseVectorLayer<VectorSource<Geometry> | VectorTile, CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer>;
   @Input('olFeatures') features?: Collection<Feature<Geometry>>;
   @Input('olWrapX') wrapX?: boolean;
 

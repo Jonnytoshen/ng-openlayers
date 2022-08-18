@@ -3,16 +3,16 @@ import {
   OnInit, 
   ViewEncapsulation, 
   ChangeDetectionStrategy, 
-  NgZone,
-  Input,
+  forwardRef,
   OnChanges,
+  NgZone,
   SimpleChanges,
-  forwardRef
+  Input
 } from '@angular/core';
 import TileWMS, { Options } from 'ol/source/TileWMS';
-import { ServerType } from 'ol/source/wms';
-import { TileImageSourceComponent } from '../tile-image-source';
 import { TileSourceComponent } from '../tile-source';
+import { TileImageSourceComponent } from '../tile-image-source';
+import { ServerType } from 'ol/source/wms';
 
 @Component({
   selector: 'ol-tile-wms-source',
@@ -22,13 +22,13 @@ import { TileSourceComponent } from '../tile-source';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{
     provide: TileSourceComponent,
-    useExisting: forwardRef(() => TileWWMSSourceComponent),
+    useExisting: forwardRef(() => TileWMSSourceComponent),
     multi: true
   }]
 })
-export class TileWWMSSourceComponent extends TileImageSourceComponent implements OnInit, OnChanges, Options {
+export class TileWMSSourceComponent extends TileImageSourceComponent implements OnInit, OnChanges, Options {
 
-  @Input('olInterpolate') interpolate?: boolean; 
+  @Input('olInterpolate') interpolate?: boolean;
   @Input('olParams') params!: Record<string, any>;
   @Input('olGutter') gutter?: number;
   @Input('olHidpi') hidpi?: boolean;

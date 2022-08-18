@@ -14,8 +14,8 @@
     "downlevelIteration": true,
     "paths": {
       "ng-openlayers": [
-        "dist/ng-openlayers/*",
-        "dist/ng-openlayers"
+        "dist/ng-openlayers",
+        "dist/ng-openlayers/*"
       ]
     },
     "experimentalDecorators": true,

@@ -18,13 +18,13 @@ import { LayerComponent } from '../layer';
     multi: true
   }]
 })
-export class BaseImageLayerComponent extends LayerComponent implements OnInit, BaseLayerRef, Options<ImageSource> {
+export class BaseImageLayerComponent<ImageSourceType extends ImageSource, RendererType extends LayerRenderer<any>> extends LayerComponent implements OnInit, BaseLayerRef, Options<ImageSourceType> {
 
-  @Input('olSource') source?: ImageSource;
+  @Input('olSource') source?: ImageSourceType;
 
-  @ContentChildren(ImageSourceComponent) sources!: QueryList<ImageSourceComponent>;
+  @ContentChildren(ImageSourceComponent) sourceComponents!: QueryList<ImageSourceComponent>;
 
-  instance!: BaseImageLayer<ImageSource, LayerRenderer<any>>;
+  instance!: BaseImageLayer<ImageSourceType, RendererType>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);
@@ -32,7 +32,7 @@ export class BaseImageLayerComponent extends LayerComponent implements OnInit, B
 
   ngOnInit(): void {
     if (!this.instance) {
-      this.ngZone.runOutsideAngular(() => this.instance = new BaseImageLayer(this));
+      this.ngZone.runOutsideAngular(() => this.instance = new BaseImageLayer<ImageSourceType, RendererType>(this));
     }
     super.ngOnInit();
   }

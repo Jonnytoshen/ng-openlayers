@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, NgZone } from '@angular/core';
 import TileLayer from 'ol/layer/Tile';
+import LayerRenderer from 'ol/renderer/Layer';
 import TileSource from 'ol/source/Tile';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { BaseTileLayerComponent } from '../base-tile-layer';
@@ -20,7 +21,7 @@ import { BaseTileLayerComponent } from '../base-tile-layer';
     multi: false
   }]
 })
-export class TileLayerComponent extends BaseTileLayerComponent implements OnInit, BaseLayerRef  {
+export class TileLayerComponent extends BaseTileLayerComponent<TileSource, LayerRenderer<any>> implements OnInit, BaseLayerRef  {
 
   instance!: TileLayer<TileSource>;
 

@@ -29,7 +29,7 @@ export class LayerComponent extends BaseLayerComponent implements OnInit, OnChan
   @Output('olOnPostrender') postrender$ = new EventEmitter<RenderEvent>();
   @Output('olOnPrerender') prerender$ = new EventEmitter<RenderEvent>();
 
-  @ContentChildren(SourceComponent) sources!: QueryList<SourceComponent>;
+  @ContentChildren(SourceComponent) sourceComponents!: QueryList<SourceComponent>;
 
   instance!: Layer<Source>;
 
@@ -58,10 +58,10 @@ export class LayerComponent extends BaseLayerComponent implements OnInit, OnChan
   }
 
   ngAfterContentInit(): void {
-    this.sources.changes
+    this.sourceComponents.changes
       .pipe(
         takeUntil(this.destroy$),
-        startWith(this.sources),
+        startWith(this.sourceComponents),
         map((sources: QueryList<SourceComponent>) => sources.last?.instance),
         distinctUntilChanged()
       )
