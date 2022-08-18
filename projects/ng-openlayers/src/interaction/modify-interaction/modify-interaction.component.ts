@@ -14,6 +14,11 @@ import { StyleLike } from 'ol/style/Style';
 import { InteractionComponent } from '../interaction';
 import { PointerInteractionComponent } from '../pointer-interaction';
 
+export type ModifyInteractionHitDetection = BaseVectorLayer<
+  VectorSource<Geometry> | VectorTile,
+  CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer
+> | boolean;
+
 @Component({
   selector: 'ol-modify-interaction',
   exportAs: 'olModifyInteraction',

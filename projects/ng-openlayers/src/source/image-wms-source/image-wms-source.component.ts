@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, OnChanges, forwardRef, Input, SimpleChanges, NgZone } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import ImageWMS, { Options } from 'ol/source/ImageWMS';
+import { ServerType } from 'ol/source/wms';
 import { ImageSourceComponent } from '../image-source';
-import { WMSServerType } from './image-wms-source.model';
 
 @Component({
   selector: 'ol-image-wms-source',
@@ -20,7 +20,7 @@ export class ImageWMSSourceComponent extends ImageSourceComponent implements OnI
 
   @Input('olCrossOrigin') crossOrigin?: string;
   @Input('olHidpi') hidpi?: boolean;
-  @Input('olServerType') serverType?: WMSServerType;
+  @Input('olServerType') serverType?: ServerType;
   @Input('olImageLoadFunction') imageLoadFunction?: LoadFunction;
   @Input('olParams') params!: { [key: string]: any };
   @Input('olRatio') ratio?: number;
