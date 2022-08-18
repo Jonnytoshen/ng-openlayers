@@ -17,6 +17,7 @@ export class ImageStyleComponent implements OnInit, OnChanges, OnDestroy, Option
   @Input('olRotation') rotation!: number;
   @Input('olScale') scale!: number | Size;
   @Input('olDisplacement') displacement!: number[];
+  @Input('olDeclutterMode') declutterMode!: "declutter" | "obstacle" | "none";
 
   instance!: ImageStyle;
 

@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnChanges, SimpleChanges, Input, Output, EventEmitter, OnInit, forwardRef, ContentChildren, QueryList, NgZone } from '@angular/core';
 import BaseTileLayer, { Options } from 'ol/layer/BaseTile';
 import { ObjectEvent } from 'ol/Object';
+import LayerRenderer from 'ol/renderer/Layer';
 import TileSource from 'ol/source/Tile';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { SourceComponent } from '../../source/source';
@@ -30,7 +31,7 @@ export class BaseTileLayerComponent extends LayerComponent implements OnInit, On
 
   @ContentChildren(TileSourceComponent) sources!: QueryList<SourceComponent>;
 
-  instance!: BaseTileLayer<TileSource>;
+  instance!: BaseTileLayer<TileSource, LayerRenderer<any>>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);

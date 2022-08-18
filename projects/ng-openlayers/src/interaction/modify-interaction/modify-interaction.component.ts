@@ -4,11 +4,20 @@ import { Condition } from 'ol/events/condition';
 import Geometry from 'ol/geom/Geometry';
 import Modify, { ModifyEvent, Options } from 'ol/interaction/Modify';
 import BaseVectorLayer from 'ol/layer/BaseVector';
+import CanvasVectorImageLayerRenderer from 'ol/renderer/canvas/VectorImageLayer';
+import CanvasVectorLayerRenderer from 'ol/renderer/canvas/VectorLayer';
+import CanvasVectorTileLayerRenderer from 'ol/renderer/canvas/VectorTileLayer';
+import WebGLPointsLayerRenderer from 'ol/renderer/webgl/PointsLayer';
 import VectorSource from 'ol/source/Vector';
 import VectorTile from 'ol/source/VectorTile';
 import { StyleLike } from 'ol/style/Style';
 import { InteractionComponent } from '../interaction';
 import { PointerInteractionComponent } from '../pointer-interaction';
+
+export type ModifyInteractionHitDetection = BaseVectorLayer<
+  VectorSource<Geometry> | VectorTile,
+  CanvasVectorLayerRenderer | CanvasVectorTileLayerRenderer | CanvasVectorImageLayerRenderer | WebGLPointsLayerRenderer
+> | boolean;
 
 @Component({
   selector: 'ol-modify-interaction',
@@ -37,7 +46,7 @@ export class ModifyInteractionComponent extends PointerInteractionComponent impl
   @Input('olPixelTolerance') pixelTolerance?: number;
   @Input('olStyle') style?: StyleLike;
   @Input('olSource') source?: VectorSource<Geometry>;
-  @Input('olHitDetection') hitDetection?: boolean | BaseVectorLayer<VectorSource<Geometry> | VectorTile>;
+  @Input('olHitDetection') hitDetection?: ModifyInteractionHitDetection;
   @Input('olFeatures') features?: Collection<Feature<Geometry>>;
   @Input('olWrapX') wrapX?: boolean;
 

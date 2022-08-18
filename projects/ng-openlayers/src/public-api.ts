@@ -32,6 +32,7 @@ export * from './source/osm-source';
 export * from './source/source';
 export * from './source/tile-image-source';
 export * from './source/tile-source';
+export * from './source/tile-wms-source';
 export * from './source/url-tile-source';
 export * from './source/vector-source';
 export * from './source/vector-tile-source';

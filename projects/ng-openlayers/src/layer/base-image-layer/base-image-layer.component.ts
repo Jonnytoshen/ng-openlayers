@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, Input, ContentChildren, QueryList, NgZone } from '@angular/core';
 import BaseImageLayer, { Options } from 'ol/layer/BaseImage';
+import LayerRenderer from 'ol/renderer/Layer';
 import ImageSource from 'ol/source/Image';
 import { BaseLayerRef, LAYER_PROVIDER } from '../../core/layer';
 import { ImageSourceComponent } from '../../source/image-source';
@@ -23,7 +24,7 @@ export class BaseImageLayerComponent extends LayerComponent implements OnInit, B
 
   @ContentChildren(ImageSourceComponent) sources!: QueryList<ImageSourceComponent>;
 
-  instance!: BaseImageLayer<ImageSource>;
+  instance!: BaseImageLayer<ImageSource, LayerRenderer<any>>;
 
   constructor(ngZone: NgZone) {
     super(ngZone);
